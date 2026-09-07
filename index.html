@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MRK UnlockTool web dashboard for device diagnostics and service workflow management." />
+  <title>MRK UnlockTool</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">MRK</span><div><strong>UnlockTool</strong><small>Device Service</small></div></div>
+    <nav>
+      <button class="nav-item active" data-view="dashboard">▦ <span>Dashboard</span></button>
+      <button class="nav-item" data-view="devices">▣ <span>Devices</span></button>
+      <button class="nav-item" data-view="logs">≡ <span>Operation Logs</span></button>
+      <button class="nav-item" data-view="files">□ <span>Files</span></button>
+      <button class="nav-item" data-view="settings">⚙ <span>Settings</span></button>
+    </nav>
+    <div class="sidebar-footer">MRK Digital<br/><span>Web Edition v1.0</span></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><p class="eyebrow">DEVICE SERVICE PLATFORM</p><h1 id="pageTitle">Dashboard</h1></div>
+      <div class="top-actions"><span class="status-dot"></span><span>System Ready</span><button id="themeBtn" class="icon-btn" title="Toggle theme">◐</button></div>
+    </header>
+
+    <section id="dashboard" class="view active-view">
+      <div class="hero"><div><span class="pill">WEB EDITION</span><h2>Professional device service workspace</h2><p>Connect your local service agent to inspect supported devices, monitor diagnostics, and track operations.</p></div><button class="primary" id="detectBtn">Detect Device</button></div>
+      <div class="stats"><div class="card stat"><span>Connection</span><strong id="connection">Offline</strong><small id="connectionHint">Local agent not connected</small></div><div class="card stat"><span>ADB Devices</span><strong id="adbCount">0</strong><small>Detected devices</small></div><div class="card stat"><span>Fastboot</span><strong id="fastbootCount">0</strong><small>Detected devices</small></div><div class="card stat"><span>Operations</span><strong id="opCount">0</strong><small>This session</small></div></div>
+      <div class="grid-2"><div class="card"><div class="card-head"><h3>Device Status</h3><span class="badge" id="deviceBadge">No device</span></div><div class="device-empty" id="deviceEmpty"><div class="device-icon">▣</div><p>Connect a supported device and run detection.</p><button class="secondary" id="detectBtn2">Run Detection</button></div><div class="device-info hidden" id="deviceInfo"><div><span>Mode</span><strong id="mode">—</strong></div><div><span>Serial</span><strong id="serial">—</strong></div><div><span>Manufacturer</span><strong id="manufacturer">—</strong></div><div><span>Model</span><strong id="model">—</strong></div></div></div>
+      <div class="card"><div class="card-head"><h3>Service Workflow</h3><span class="muted">Safe diagnostics</span></div><div class="workflow"><div><b>01</b><span>Connect local agent</span></div><div><b>02</b><span>Detect device</span></div><div><b>03</b><span>Review device information</span></div><div><b>04</b><span>Run authorized service action</span></div></div><p class="notice">Security-sensitive unlock or bypass actions are intentionally not executed by this browser UI. Use only authorized service procedures.</p></div></div>
+    </section>
+
+    <section id="devices" class="view"><div class="section-card card"><div class="card-head"><h3>Connected Devices</h3><button class="primary" id="detectBtn3">Detect</button></div><div id="deviceTable" class="table-wrap"><div class="table-empty">No devices detected.</div></div></div></section>
+    <section id="logs" class="view"><div class="section-card card"><div class="card-head"><h3>Operation Logs</h3><button class="secondary" id="clearLogs">Clear</button></div><pre id="logBox" class="log-box">[SYSTEM] MRK UnlockTool Web Edition started.\n[INFO] Waiting for local service agent...\n</pre></div></section>
+    <section id="files" class="view"><div class="section-card card"><h3>Files</h3><p class="muted">Firmware and service files can be listed here after a backend/local-agent integration is configured.</p><div class="dropzone">Drop supported service files here<br/><small>File management UI placeholder</small></div></div></section>
+    <section id="settings" class="view"><div class="section-card card"><h3>Settings</h3><label>API / Local Agent URL<input id="agentUrl" value="http://127.0.0.1:8765" /></label><button class="primary" id="saveSettings">Save Settings</button><p id="saveMsg" class="muted"></p></div></section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
